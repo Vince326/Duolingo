@@ -1,27 +1,24 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ScrollView, Image, TextInput, StyleSheet } from 'react-native';
+import icon from './assets/icon.png'
+import styles from './App.styles';
 
-// const App = () => {
+const App = () => {
 
-//   return (
-//     <View style={{
-//       flex: 1, alignItems: "center", justifyContent: "center"
-//     }}>
-//       <Text>Hello World</Text>
-//     </View>
-//   );
-// };
+  const status = "error";
+  return (
+    <View style={styles.root}>
+      <Text style={styles.title}>Which of these are the glass? </Text>
 
-class App extends React.Component {
-  render() {
-    return (
-      <View style={{
-        flex: 1, alignItems: "center", justifyContent: "center"
-      }}>
-        <Text>Hello World</Text>
+      <View style={styles.optionContainer}>
+        <Image source={{ uri: "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/glass.png" }} />
+        <Text style={styles.optionText}>Glass</Text>
       </View>
-    );
-  }
-}
+    </View>
+  );
+};
+
+
+
 
 export default App;
