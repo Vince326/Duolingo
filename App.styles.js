@@ -14,25 +14,18 @@ const styles = StyleSheet.create({
         alignSelf: "stretch"
     },
 
-    optionContainer: {
-        //border styling
-        borderWidth: 2,
-        borderColor: "lightgrey",
-        borderRadius: 15,
-        borderBottomWidth: 4
+    optionsContainer: {
+        width: "100%",
+        flex: 1,
 
-        //Container Size
+
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "space-between",
+        alignContent: "space-between"
 
     },
 
-    optionImage: {
-        width: 100,
-        height: 100
-    },
-
-    optionText: {
-
-    }
 
 
 });
