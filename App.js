@@ -1,26 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, ScrollView, Image, TextInput, StyleSheet } from 'react-native';
 import icon from './assets/icon.png'
 import styles from './App.styles';
 import ImageOption from './src/components/ImageOption/ImageOption';
+import question from './assets/assets/data/oneQuestionWithOption';
+import propTypes from 'prop-types';
+import Button from './src/components/Button';
 
 const App = () => {
+  const [selectedOption, setSelected] = useState(null);
 
-  const status = "error";
+  const onButtonPress = () => {
+    console.warn("Button Pressed");
+
+  }
+
   return (
     <View style={styles.root}>
-      <Text style={styles.title}>Which of these are the glass? </Text>
+      <Text style={styles.title}>{question.question}</Text>
 
       <View style={styles.optionsContainer}>
-        <ImageOption image="https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/cup.png" text="Cup" />
-        <ImageOption image="https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/glass.png" text="Glass" />
-        <ImageOption image="https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/milk.png" text="Milk" />
-        <ImageOption image="https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/coffee.png" text="Coffee" />
+
+        {question.options.map((option) => (
+          <ImageOption key={option.id}
+            image={option.image}
+            text={option.text}
+            isSelected={selectedOption?.id === option.id}
+            onPress={() => setSelected(option)}
+          />
+        ))}
+
       </View>
 
+      <Button text="Check" onPress={onButtonPress} disabled={true} />
     </View >
   );
+
+
 };
+
+
 
 
 
