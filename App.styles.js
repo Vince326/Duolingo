@@ -8,23 +8,6 @@ const styles = StyleSheet.create({
         padding: 10,
     },
 
-    title: {
-        fontSize: 25,
-        fontWeight: "bold",
-        alignSelf: "stretch"
-    },
-
-    optionsContainer: {
-        width: "100%",
-        flex: 1,
-
-
-        flexDirection: "row",
-        flexWrap: "wrap",
-        justifyContent: "space-between",
-        alignContent: "space-between"
-
-    },
 
 
 

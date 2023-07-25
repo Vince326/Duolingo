@@ -8,10 +8,13 @@ import propTypes from 'prop-types';
 import Button from './src/components/Button';
 import questions from './assets/assets/data/imageMulatipleChoiceQuestions';
 import { Alert } from 'react-native/types';
+import ImageMultipleChoiceQuestion from './src/components/ImageMultipleChoiceQuestion';
+import OpenEndedQuestion from '../Duolingo/src/components/OpenEndedQuestion'
+
+import questions from './assets/assets/data/openEndedQuestions';
 
 
 const App = () => {
-  const [selectedOption, setSelected] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(questions[currentQuestionIndex])
 
@@ -25,43 +28,29 @@ const App = () => {
     }
   }, [currentQuestionIndex]);
 
-  const onButtonPress = () => {
-    if (selectedOption.correct) {
-      Alert.alert("Correct");
-      // move to the next question
-      console.log("current index: ", currentQuestionIndex);
-
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setSelectedOption(null);
-      console.log("changed to index ", nextIndex);
-
-      setCurrentQuestion(questions[nextIndex])
-    } else {
-      Alert.alert("That's the Wrong Answer!!")
-    }
-
+  const onCorrect = () => {
+    setCurrentQuestion(currentQuestionIndex + 1)
   }
+
+  const onWrong = () => {
+    Alert.alert("Wrrrong");
+  }
+
+
 
   return (
     <View style={styles.root}>
-      <Text style={styles.title}>{
 
-        currentQuestion.question}</Text>
-
-      <View style={styles.optionsContainer}>
-
-        {question.options.map((option) => (
-          <ImageOption key={option.id}
-            image={option.image}
-            text={option.text}
-            isSelected={selectedOption?.id === option.id}
-            onPress={() => setSelected(option)}
-          />
-        ))}
-
-      </View>
-
-      <Button text="Check" onPress={onButtonPress} disabled={!selectedOption} />
+      {/*<ImageMultipleChoiceQuestion
+        question={currentQuestion}
+        onCorrect={onCorrect}
+        onWrong={onWrong}
+  /> */}
+      <OpenEndedQuestion
+        question={currentQuestion}
+        onCorrect={onCorrect}
+        onWrong={onWrong}
+      />
     </View >
   );
 
