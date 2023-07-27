@@ -13,33 +13,42 @@ const styles = StyleSheet.create({
         alignSelf: "stretch",
         alignItems: 'center',
 
-        margin: 10
+        margin: 10,
+        marginBottom: 0
     },
 
     mascot: {
         width: "20%",
         aspectRatio: 3 / 4,
-        marginRight: 10
+        marginRight: 10,
+        backgroundColor: "red"
     },
 
     sentence: {
 
         fontSize: 16
     },
+
     sentenceContainer: {
 
         borderWidth: 1,
-        borderColor: "light gray",
+        borderColor: "lightgrey",
         borderRadius: 5,
 
         padding: 10,
     },
+
     textInput: {
         alignSelf: "stretch",
         flex: 1,
 
         backgroundColor: "#ebebeb",
-        borderWidth: 
+        borderWidth: 1,
+        borderRadius: 10,
+
+        padding: 10,
+        fontSize: 16
+
     }
 
 });

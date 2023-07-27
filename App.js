@@ -11,7 +11,7 @@ import { Alert } from 'react-native/types';
 import ImageMultipleChoiceQuestion from './src/components/ImageMultipleChoiceQuestion';
 import OpenEndedQuestion from '../Duolingo/src/components/OpenEndedQuestion'
 
-import questions from './assets/assets/data/openEndedQuestions';
+import questions from './assets/assets/data/allQuestions';
 
 
 const App = () => {
@@ -41,16 +41,17 @@ const App = () => {
   return (
     <View style={styles.root}>
 
-      {/*<ImageMultipleChoiceQuestion
+      {currentQuestion.type === 'IMAGEM_ULTIPLE_CHOICE' ? (<ImageMultipleChoiceQuestion
         question={currentQuestion}
         onCorrect={onCorrect}
         onWrong={onWrong}
-  /> */}
-      <OpenEndedQuestion
+      />) : null}
+
+      {currentQuestion.type === 'OPEN_ENDED' ? <OpenEndedQuestion
         question={currentQuestion}
         onCorrect={onCorrect}
         onWrong={onWrong}
-      />
+      /> : null}
     </View >
   );
 
