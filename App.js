@@ -15,6 +15,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import OpenEndedQuestion from '../Duolingo/src/components/OpenEndedQuestion';
 
 import questions from './assets/assets/data/allQuestions';
+import SentenceCompletion from './src/components/SentenceCompletion';
 
 
 const App = () => {
@@ -79,51 +80,59 @@ const App = () => {
   catch (e) {
     console.error(e)
   }
-};
 
-try {
-  const loadInfo = async () => {
-    const loadedLives = await AsyncStorage.getItem('lives')
-    if (loadedLives) {
-      setLives(parseInt(loadedLives))
-    }
-    const currentQuestionIndex = await AsyncStorage.getItem('currentQuestionIndex');
+  try {
+    const loadInfo = async () => {
+      const loadedLives = await AsyncStorage.getItem('lives')
+      if (loadedLives) {
+        setLives(parseInt(loadedLives))
+      }
+      const currentQuestionIndex = await AsyncStorage.getItem('currentQuestionIndex');
 
-    if (currentQuestionIndex) {
-      setLives(parseInt(currentQuestionIndex))
+      if (currentQuestionIndex) {
+        setLives(parseInt(currentQuestionIndex))
+      }
     }
+
+    setHasLoaded(true);
   }
 
-  setHasLoaded(true);
-}
-catch (e) {
-  console.error("Something wrong has happened", e);
-}
+  catch (e) {
+    console.error("Something wrong has happened", e);
+  }
 
-if (!hasLoaded) {
-  return (<ActivityIndicator />);
+  if (!hasLoaded) {
+    return (<ActivityIndicator />);
 
-}
+  }
 
 
-return (
-  <View style={styles.root}>
+  return (
+    <View style={styles.root}>
 
-    <Header progress={currentQuestionIndex / questions.length} lives={lives} />
+      <Header progress={currentQuestionIndex / questions.length} lives={lives} />
 
-    {currentQuestion.type === 'IMAGEM_ULTIPLE_CHOICE' ? (<ImageMultipleChoiceQuestion
-      question={currentQuestion}
-      onCorrect={onCorrect}
-      onWrong={onWrong}
-    />) : null}
+      <SentenceCompletion
 
-    {currentQuestion.type === 'OPEN_ENDED' ? <OpenEndedQuestion
-      question={currentQuestion}
-      onCorrect={onCorrect}
-      onWrong={onWrong}
-    /> : null}
-  </View >
-)};
+        question={currentQuestion}
+        onCorrect={onCorrect}
+        onWrong={onWrong}
+      />
+
+      {/* {currentQuestion.type === 'IMAGEM_ULTIPLE_CHOICE' ? (<ImageMultipleChoiceQuestion
+        question={currentQuestion}
+        onCorrect={onCorrect}
+        onWrong={onWrong}
+      />) : null}
+
+      {currentQuestion.type === 'OPEN_ENDED' ? <OpenEndedQuestion
+        question={currentQuestion}
+        onCorrect={onCorrect}
+        onWrong={onWrong}
+      /> : null} */}
+    </View >
+  );
+};
 
 
 
