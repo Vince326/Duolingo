@@ -90,7 +90,7 @@ const App = () => {
       const currentQuestionIndex = await AsyncStorage.getItem('currentQuestionIndex');
 
       if (currentQuestionIndex) {
-        setLives(parseInt(currentQuestionIndex))
+        setcurrentQuestionIndex(parseInt(currentQuestionIndex))
       }
     }
 
@@ -112,14 +112,15 @@ const App = () => {
 
       <Header progress={currentQuestionIndex / questions.length} lives={lives} />
 
-      <SentenceCompletion
+      {currentQuestion.type === "FILL_IN_THE_BLANK" &&
+        (<SentenceCompletion
+          question={currentQuestion}
+          onCorrect={onCorrect}
+          onWrong={onWrong}
+        />
+        )}
 
-        question={currentQuestion}
-        onCorrect={onCorrect}
-        onWrong={onWrong}
-      />
-
-      {/* {currentQuestion.type === 'IMAGEM_ULTIPLE_CHOICE' ? (<ImageMultipleChoiceQuestion
+      {currentQuestion.type === 'IMAGEM_ULTIPLE_CHOICE' ? (<ImageMultipleChoiceQuestion
         question={currentQuestion}
         onCorrect={onCorrect}
         onWrong={onWrong}
@@ -129,7 +130,7 @@ const App = () => {
         question={currentQuestion}
         onCorrect={onCorrect}
         onWrong={onWrong}
-      /> : null} */}
+      /> : null}
     </View >
   );
 };

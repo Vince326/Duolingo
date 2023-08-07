@@ -2,7 +2,26 @@ export default [
   {
     id: "q0",
     type: "FILL_IN_THE_BLANK",
-    text: "una nina, un ",
+    pieces: [
+      {
+        text: "la",
+        isBlank: true
+      },
+      {
+        text: "nino",
+        isBlank: false
+      },
+
+      {
+        text: "el",
+        isBlank: true
+      },
+      {
+        text: "nina",
+        isBlank: false
+      }
+    ],
+
     options: ["yo", "la", "mujer", "el"],
 
   },

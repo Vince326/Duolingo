@@ -10,8 +10,15 @@ const styles = StyleSheet.create({
     row: {
         flexDirection: "row",
         alignSelf: "flex-start",
-        marginVertical: 10
+        marginVertical: 10,
+        height: 60,
+        justifyContent: "center"
 
+    },
+
+    text: {
+        alignSelf: "flex-end",
+        fontSize: 18
     },
 
     blank: {
